@@ -1,0 +1,141 @@
+<!-- pages/home/home.component.html -->
+<div class="container">
+  <header class="header">
+    <h1>🗺️ Explorador de Cidades BR</h1>
+    <p>Roteiros personalizados para explorar o Brasil</p>
+  </header>
+
+  <div class="content">
+    <!-- Formulário -->
+    <form [formGroup]="itineraryForm" (ngSubmit)="onSubmit()" class="itinerary-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">🏙️ Cidade:</label>
+          <input 
+            id="city"
+            formControlName="city"
+            placeholder="Ex: Russas, Fortaleza, Rio de Janeiro..."
+            class="form-control"
+          >
+          <small *ngIf="itineraryForm.get('city')?.invalid && itineraryForm.get('city')?.touched" class="error">
+            Digite o nome da cidade (mín. 3 caracteres)
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="state">🗺️ Estado:</label>
+          <select id="state" formControlName="state" class="form-control">
+            <option value="">Selecione o estado</option>
+            <option *ngFor="let state of states" [value]="state">
+              {{state}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="duration">📅 Dias de Viagem:</label>
+          <input 
+            id="duration"
+            type="number"
+            formControlName="duration"
+            min="1"
+            max="7"
+            class="form-control"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>💰 Orçamento:</label>
+        <div class="budget-options">
+          <label *ngFor="let budget of budgetOptions" class="budget-option">
+            <input 
+              type="radio" 
+              formControlName="budget" 
+              [value]="budget.value"
+            >
+            <span>{{budget.label}}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>🎯 Interesses (opcional):</label>
+        <div class="interests-grid">
+          <label *ngFor="let interest of interestsList" class="interest-option">
+            <input 
+              type="checkbox"
+              [value]="interest"
+              (change)="onInterestChange(interest, $event)"
+            >
+            <span>{{interest}}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button 
+            type="submit" 
+            class="btn-primary"
+            [disabled]="!itineraryForm.valid || isLoading"
+        >
+            {{ isLoading ? '🗺️ Criando roteiro...' : '✨ Criar Roteiro' }}
+        </button>
+      </div>
+    </form>
+
+    <!-- Resultado -->
+    <div *ngIf="itinerary" class="itinerary-section">
+      <div class="itinerary-header">
+        <h2>🌆 {{itinerary.city}}, {{itinerary.state}}</h2>
+        <p class="summary">{{itinerary.summary}}</p>
+      </div>
+
+      <!-- Dias do itinerário -->
+      <div *ngFor="let day of itinerary.days" class="day-card">
+        <h3>📅 Dia {{day.day}}: {{day.title}}</h3>
+        
+        <div class="places-grid">
+          <div *ngFor="let place of day.places" class="place-card">
+            <!--<div class="place-image">
+              <img [src]="place.imageUrl" [alt]="place.name" (error)="place.imageUrl = 'assets/default-image.jpg'">
+              <span class="category-badge" [class]="place.category">
+                {{place.category}}
+              </span>
+            </div> -->
+            
+            <div class="place-content">
+              <h4>{{place.name}}</h4>
+              <p class="description">{{place.description}}</p>
+              
+              <div class="place-meta">
+                <span class="meta-item">⏱️ {{place.visitDuration}}</span>
+                <span class="meta-item">🕒 {{place.bestTime}}</span>
+                <span class="meta-item">💵 {{place.cost || 'N/I'}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dicas -->
+      <div class="tips-section">
+        <h4>💡 Dicas para {{itinerary.city}}</h4>
+        <ul>
+          <li *ngFor="let tip of itinerary.tips">{{tip}}</li>
+        </ul>
+      </div>
+
+      <div class="action-buttons">
+        <button (click)="resetForm()" class="btn-outline">
+          🗺️ Nova Busca
+        </button>
+      </div>
+    </div>
+
+    <!-- Erro -->
+    <div *ngIf="error" class="error-message">
+      ❌ {{error}}
+    </div>
+  </div>
+</div>
