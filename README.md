@@ -40,6 +40,9 @@
 5. ACESSAR NO NAVEGADOR
    http://localhost:4200
 
+6. ACESSAR NO SITE HOSPEDADO
+https://gilded-medovik-c6a38b.netlify.app/
+
 ## COMANDOS ÚTEIS
 
 npm start          - Executar em desenvolvimento
@@ -49,15 +52,15 @@ npm test           - Executar testes
 ## ESTRUTURA DO PROJETO
 
 city-explorer/
-├── src/
-│   ├── app/
-│   │   ├── services/gemini.service.ts
-│   │   ├── interfaces/itinerary.interface.ts
-│   │   └── pages/home/
-│   ├── environments/environment.ts
-│   └── ...
-├── package.json
-└── angular.json
+- src/
+  - app/
+      - services/gemini.service.ts
+      - interfaces/itinerary.interface.ts
+      - pages/home/
+      - environments/environment.ts
+
+- package.json
+- angular.json
 
 ## SOLUÇÃO DE PROBLEMAS COMUNS
 
@@ -73,8 +76,3 @@ Solução:
 ERRO: "Invalid API Key"
 Solução:
   Verifique se a chave do Gemini está correta no environment.ts
-
-## CONTATO
-Em caso de dúvidas, abra uma issue no repositório ou entre em contato.
-
---- FIM DAS INSTRUÇÕES ---
