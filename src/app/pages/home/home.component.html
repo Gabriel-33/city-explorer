@@ -5,6 +5,14 @@
     <p>Roteiros personalizados para explorar o Brasil</p>
   </header>
 
+  <!-- AD 1: Topo da página -->
+  <app-ad-unit 
+    adSlot="8090728721" 
+    adFormat="auto"
+    [isMobile]="false"
+    [showPlaceholder]="true">
+  </app-ad-unit>
+
   <div class="content">
     <!-- Formulário -->
     <form [formGroup]="itineraryForm" (ngSubmit)="onSubmit()" class="itinerary-form">
@@ -84,16 +92,58 @@
       </div>
     </form>
 
+    <!-- AD 2: Após o formulário (antes dos resultados) -->
+    <div *ngIf="!isLoading && !itinerary && !error">
+      <app-ad-unit 
+        adSlot="8090728721" 
+        adFormat="rectangle"
+        [isMobile]="true"
+        [showPlaceholder]="true">
+      </app-ad-unit>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading">
+      <p>🔄 Criando seu roteiro personalizado com IA...</p>
+      
+      <!-- AD 3: Durante o loading (mobile) -->
+      <app-ad-unit 
+        adSlot="auto" 
+        adFormat="rectangle"
+        [isMobile]="true"
+        [showPlaceholder]="true">
+      </app-ad-unit>
+    </div>
+
     <!-- Resultado -->
     <div *ngIf="itinerary" class="itinerary-section">
+      
+      <!-- AD 4: Topo dos resultados -->
+      <app-ad-unit 
+        adSlot="auto" 
+        adFormat="horizontal"
+        [isMobile]="false"
+        [showPlaceholder]="true">
+      </app-ad-unit>
+
       <div class="itinerary-header">
         <h2>🌆 {{itinerary.city}}, {{itinerary.state}}</h2>
         <p class="summary">{{itinerary.summary}}</p>
       </div>
 
       <!-- Dias do itinerário -->
-      <div *ngFor="let day of itinerary.days" class="day-card">
+      <div *ngFor="let day of itinerary.days; let i = index" class="day-card">
         <h3>📅 Dia {{day.day}}: {{day.title}}</h3>
+        
+        <!-- AD 5: Após o primeiro dia (engajamento máximo) -->
+        <div *ngIf="i === 1 && itinerary.days.length > 2">
+          <app-ad-unit 
+            adSlot="auto" 
+            adFormat="rectangle"
+            [isMobile]="true"
+            [showPlaceholder]="true">
+          </app-ad-unit>
+        </div>
         
         <div class="places-grid">
           <div *ngFor="let place of day.places" class="place-card">
@@ -118,6 +168,14 @@
         </div>
       </div>
 
+      <!-- AD 6: Antes das dicas finais -->
+      <app-ad-unit 
+        adSlot="auto" 
+        adFormat="rectangle"
+        [isMobile]="true"
+        [showPlaceholder]="true">
+      </app-ad-unit>
+
       <!-- Dicas -->
       <div class="tips-section">
         <h4>💡 Dicas para {{itinerary.city}}</h4>
@@ -125,6 +183,14 @@
           <li *ngFor="let tip of itinerary.tips">{{tip}}</li>
         </ul>
       </div>
+
+      <!-- AD 7: Footer da página -->
+      <app-ad-unit 
+        adSlot="7530463702" 
+        adFormat="horizontal"
+        [isMobile]="false"
+        [showPlaceholder]="false">
+      </app-ad-unit>
 
       <div class="action-buttons">
         <button (click)="resetForm()" class="btn-outline">
@@ -136,6 +202,14 @@
     <!-- Erro -->
     <div *ngIf="error" class="error-message">
       ❌ {{error}}
+      
+      <!-- AD 8: Em caso de erro (mantém monetização) -->
+      <app-ad-unit 
+        adSlot="7530463702" 
+        adFormat="auto"
+        [isMobile]="false"
+        [showPlaceholder]="false">
+      </app-ad-unit>
     </div>
   </div>
 </div>
