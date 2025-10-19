@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gilded-medovik-c6a38b.netlify.app/sitemap.xml
