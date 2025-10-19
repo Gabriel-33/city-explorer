@@ -41,7 +41,7 @@
    http://localhost:4200
 
 6. ACESSAR NO SITE HOSPEDADO
-https://gilded-medovik-c6a38b.netlify.app/
+https://explorador-cidades-br.netlify.app/
 
 ## COMANDOS ÚTEIS
 
