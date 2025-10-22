@@ -8,8 +8,8 @@
   <link rel="icon" type="image/x-icon" href="favicon.jpg">
   
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2356473671774504" crossorigin="anonymous"></script>
-  
+  <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2356473671774504" crossorigin="anonymous"></script>
+  !-->
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -25,8 +25,53 @@
     "areaServed": "Brasil",
     "serviceType": "Planejamento de viagens"
   }
-</script>
+  <script>
+  function scrollToForm() {
+    const formElement = document.querySelector('app-root');
+    if (formElement) {
+      // Calcula a posição do form
+      const elementPosition = formElement.getBoundingClientRect().top + window.pageYOffset;
+      
+      // Scroll suave até o form
+      window.scrollTo({
+        top: elementPosition - 80, // 80px de margem para o header
+        behavior: 'smooth'
+      });
+    }
+  }
 
+  // Adiciona o evento ao botão quando a página carregar
+  document.addEventListener('DOMContentLoaded', function() {
+    const createButton = document.querySelector('.btn-secondary');
+    if (createButton) {
+      createButton.addEventListener('click', scrollToForm);
+    }
+  });
+
+</script>
+<script>
+  function scrollToForm() {
+    const formElement = document.querySelector('app-root');
+    if (formElement) {
+      // Calcula a posição do form
+      const elementPosition = formElement.getBoundingClientRect().top + window.pageYOffset;
+      
+      // Scroll suave até o form
+      window.scrollTo({
+        top: elementPosition - 80, // 80px de margem para o header
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Adiciona o evento ao botão quando a página carregar
+  document.addEventListener('DOMContentLoaded', function() {
+    const createButton = document.querySelector('.btn-secondary');
+    if (createButton) {
+      createButton.addEventListener('click', scrollToForm);
+    }
+  });
+</script>
   <meta name="description" content="Crie roteiros personalizados GRATUITOS para cidades brasileiras usando IA. Planeje sua viagem para Rio, São Paulo, Salvador, Florianópolis com dicas de pontos turísticos, restaurantes e passeios. Ferramenta 100% gratuita de planejamento de viagens no Brasil." />
   <meta name="keywords" content="roteiro 3 dias rio de janeiro,o que fazer em são paulo final de semana,pontos turísticos salvador bahia,melhores praias florianópolis,viagem romântica paraty,roteiro viagem, cidades brasileiras, turismo brasil, planejador viagem, pontos turísticos, dicas viagem, ia, inteligência artificial" />
   <meta property="og:title" content="Explorador de Cidades Brasileiras - Roteiros Personalizados com IA" />
@@ -38,11 +83,7 @@
   <meta name="twitter:title" content="Explorador de Cidades Brasileiras - Roteiros Personalizados com IA" />
   <meta name="twitter:description" content="Crie roteiros de viagem personalizados para cidades brasileiras usando IA. Descubra os melhores lugares, horários e dicas para sua viagem." />
   <meta name="twitter:image" content="/assets/og-image.jpg" />
-  
-  <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background-color:#f5f5f5;color:#333;line-height:1.6}</style>
-  <link rel="stylesheet" href="styles.8f2b519ac5b1a231.css" media="all" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="styles.8f2b519ac5b1a231.css"></noscript>
-  
+    
   <!-- Seus estilos existentes + estilos dos ads -->
   <style>
     .container{max-width:1200px;margin:0 auto;padding:20px;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}
@@ -85,9 +126,608 @@
     .itinerary-form{background:#fff;padding:30px;border-radius:15px;box-shadow:0 4px 15px #0000001a;margin-bottom:30px}
     .form-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px}
     /* ... resto dos seus estilos existentes */
+    /* === ESTILOS DOS CARDS DE EXEMPLO (GLOBAL) === */
+ /* HEADER COM HIDE ON SCROLL */
+.header {
+  background: #000;
+  color: white;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(0);
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-actions .btn-secondary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-actions .btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Compensar o header fixo */
+.examples-section {
+  padding-top: 100px; /* Espaço para o header fixo */
+}
+
+/* FOOTER SIMPLES E ELEGANTE */
+.footer {
+  background: #000;
+  color: white;
+  padding: 30px 0 20px;
+  margin-top: 60px;
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-section h4 {
+  color: #667eea;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-logo .logo-icon {
+  font-size: 1.5rem;
+}
+
+.footer-logo .logo-text {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-description {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #667eea;
+}
+
+.contact-info {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.contact-info p {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    justify-content: center;
+  }
+  
+  .footer {
+    padding: 25px 0 15px;
+  }
+}
+/* Responsivo */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .examples-section {
+    padding-top: 140px; /* Mais espaço no mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+}
+
+.examples-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.examples-section .itinerary-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.examples-section .itinerary-header h2 {
+  color: #e7ece7;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.examples-section .itinerary-header .summary {
+  color: #666;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.examples-section .itinerary-section {
+  margin-top: 40px;
+}
+
+.examples-section .day-card {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.examples-section .day-card h3 {
+  color: #2e7d32;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.examples-section .places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.examples-section .place-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.examples-section .place-card:hover {
+  transform: translateY(-5px);
+}
+
+.examples-section .place-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.examples-section .place-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.examples-section .category-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.examples-section .category-badge.cultural { 
+  background: #ff6b6b; 
+}
+
+.examples-section .category-badge.natureza { 
+  background: #51cf66; 
+}
+
+.examples-section .category-badge.gastronomia { 
+  background: #ff922b; 
+}
+
+.examples-section .category-badge.compras { 
+  background: #339af0; 
+}
+
+.examples-section .category-badge.entretenimento { 
+  background: #cc5de8; 
+}
+
+.examples-section .place-content {
+  padding: 15px;
+}
+
+.examples-section .place-content h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.examples-section .place-content .description {
+  color: #1f1e1e;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.examples-section .place-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.examples-section .meta-item {
+  font-size: 12px;
+  color: #888;
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.examples-section .tips-section {
+  background: #e8f5e8;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.examples-section .tips-section h4 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+
+.examples-section .tips-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.examples-section .tips-section li {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.examples-section .button-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .examples-section .places-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .examples-section {
+    padding: 10px;
+  }
+  
+  .examples-section .itinerary-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .examples-section .day-card h3 {
+    font-size: 1.2rem;
+  }
+}
   </style>
 </head>
 <body>
-  <app-root></app-root>
+  <header class="header">
+  <nav class="nav-container">
+    <div class="logo">
+      <span class="logo-text">City Explorer BR</span>
+    </div>
+    
+    <div class="nav-actions">
+      <a href="javascript:void(0)" class="btn-secondary" onclick="scrollToForm()">
+        ✨ Criar Roteiro
+      </a>
+    </div>
+  </nav>
+</header>
+  <!-- SEÇÃO DE EXEMPLOS -->
+  <section class="examples-section">
+      <div class="itinerary-header">
+        <h2>Roteiros de viagens Criados por IA</h2>
+      </div>
+      
+      <div class="itinerary-section">
+        
+        <!-- Exemplo 1: Rio de Janeiro -->
+        <div class="day-card">
+          <h3>🌆 Rio de Janeiro - Roteiro Cultural de 3 Dias</h3>
+          <div class="places-grid">
+            
+            <div class="place-card">
+              <div class="place-image">
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                  🗽
+                </div>
+                <div class="category-badge cultural">Cultural</div>
+              </div>
+              <div class="place-content">
+                <h4>Cristo Redentor & Pão de Açúcar</h4>
+                <p class="description">Comece o dia visitando os cartões postais mais famosos do Rio. Vista despojada e tênis confortável são essenciais.</p>
+                <div class="place-meta">
+                  <span class="meta-item">⏰ 4-6 horas</span>
+                  <span class="meta-item">💰 $$</span>
+                  <span class="meta-item">⭐ Imperdível</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="place-card">
+              <div class="place-image">
+                <div style="background: linear-gradient(135deg, #51cf66, #2b8a3e); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                  🏖️
+                </div>
+                <div class="category-badge natureza">Natureza</div>
+              </div>
+              <div class="place-content">
+                <h4>Praias de Copacabana & Ipanema</h4>
+                <p class="description">Tarde relaxante nas praias mais famosas do mundo. Aproveite para experimentar sucos naturais e comida de praia.</p>
+                <div class="place-meta">
+                  <span class="meta-item">⏰ 3-5 horas</span>
+                  <span class="meta-item">💰 $</span>
+                  <span class="meta-item">🏄 Atividades</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="place-card">
+              <div class="place-image">
+                <div style="background: linear-gradient(135deg, #ff922b, #e8590c); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                  🎭
+                </div>
+                <div class="category-badge cultural">Cultural</div>
+              </div>
+              <div class="place-content">
+                <h4>Santa Teresa & Lapa</h4>
+                <p class="description">Noite cultural no bairro boêmio, visitando a Escadaria Selarón e os arcos da Lapa. Vida noturna vibrante.</p>
+                <div class="place-meta">
+                  <span class="meta-item">⏰ 4-6 horas</span>
+                  <span class="meta-item">💰 $$</span>
+                  <span class="meta-item">🎵 Música ao vivo</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="tips-section">
+            <h4>💡 Dicas para o Rio</h4>
+            <ul>
+              <li>Use transporte por aplicativo para se locomover</li>
+              <li>Protetor solar é essencial o ano todo</li>
+              <li>Reserve ingressos online para atrações populares</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Exemplo 2: São Paulo -->
+        <div class="day-card">
+          <h3>🏙️ São Paulo - Final de Semana Gastronômico</h3>
+          <div class="places-grid">
+            
+            <div class="place-card">
+              <div class="place-image">
+                <div style="background: linear-gradient(135deg, #cc5de8, #9c36b5); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                  🍝
+                </div>
+                <div class="category-badge gastronomia">Gastronomia</div>
+              </div>
+              <div class="place-content">
+                <h4>Mercado Municipal & Liberdade</h4>
+                <p class="description">Manhã gastronômica no Mercadão provando sanduíche de mortadela e depois explorando o bairro japonês.</p>
+                <div class="place-meta">
+                  <span class="meta-item">⏰ 3-4 horas</span>
+                  <span class="meta-item">💰 $$</span>
+                  <span class="meta-item">🍣 Comida diversa</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="place-card">
+              <div class="place-image">
+                <div style="background: linear-gradient(135deg, #339af0, #1971c2); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                  🎨
+                </div>
+                <div class="category-badge cultural">Cultural</div>
+              </div>
+              <div class="place-content">
+                <h4>MASP & Avenida Paulista</h4>
+                <p class="description">Tarde cultural no museu mais importante da América Latina e passeio pela avenida mais famosa de SP.</p>
+                <div class="place-meta">
+                  <span class="meta-item">⏰ 4-5 horas</span>
+                  <span class="meta-item">💰 $$</span>
+                  <span class="meta-item">🏛️ Museu</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="place-card">
+              <div class="place-image">
+                <div style="background: linear-gradient(135deg, #ff6b6b, #e03131); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                  🛍️
+                </div>
+                <div class="category-badge compras">Compras</div>
+              </div>
+              <div class="place-content">
+                <h4>Vila Madalena & Batman Alley</h4>
+                <p class="description">Final de tarde no bairro hipster, conhecendo a rua de grafite mais famosa e boutiques locais.</p>
+                <div class="place-meta">
+                  <span class="meta-item">⏰ 3-4 horas</span>
+                  <span class="meta-item">💰 $$$</span>
+                  <span class="meta-item">🎨 Arte urbana</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="tips-section">
+            <h4>💡 Dicas para São Paulo</h4>
+            <ul>
+              <li>Metrô é eficiente para se locomover no centro</li>
+              <li>Restaurantes: reserve com antecedência</li>
+              <li>Domingo: Paulista fecha para pedestres</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to Action -->
+      <div class="itinerary-header">
+        <div class="button-container">
+          <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; padding: 15px 30px; border-radius: 8px; font-size: 1.2rem; font-weight: 600;">
+            👇 Faça sua busca personalizada AGORA 👇
+          </div>
+        </div>
+      </div>
+  </section>
+  <app-root id="form-content"></app-root>
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <div class="footer-logo">
+        <span class="logo-icon">🌎</span>
+        <span class="logo-text">City Explorer BR</span>
+      </div>
+      <p class="footer-description">
+        Criando roteiros de viagem perfeitos para o Brasil com inteligência artificial. 
+        Descubra novos destinos e viva experiências únicas.
+      </p>
+    </div>
+    
+    <div class="footer-section">
+      <h4>📋 Navegação</h4>
+      <ul class="footer-links">
+        <li><a href="#top">🏠 Início</a></li>
+        <li><a href="#form-content">✨ Criar Roteiro</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <div class="contact-info">
+        <p>🌐 Explorador de Cidades BR</p>
+        <p>📍 Brasil</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2025 City Explorer BR. Todos os direitos reservados.</p>
+  </div>
+</footer>
 </body>
 </html>

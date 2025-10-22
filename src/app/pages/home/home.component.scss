@@ -125,12 +125,12 @@
   margin-bottom: 30px;
   
   h2 {
-    color: #2e7d32;
+    color: #eaf0ea;
     margin-bottom: 10px;
   }
   
   .summary {
-    color: #666;
+    color: #eaf0ea;
     font-size: 1.1rem;
   }
 }
@@ -206,7 +206,7 @@
   }
   
   .description {
-    color: #666;
+    color: #292828;
     font-size: 14px;
     line-height: 1.4;
     margin-bottom: 15px;
@@ -254,8 +254,8 @@
 }
 
 .btn-outline {
-  background: transparent;
-  color: #2e7d32;
+  background: rgb(223, 220, 220);
+  color: #2d2e2d;
   border: 2px solid #2e7d32;
   padding: 12px 24px;
   border-radius: 6px;
@@ -263,7 +263,7 @@
   font-size: 16px;
   
   &:hover {
-    background: #2e7d32;
+    background: #232423;
     color: white;
   }
 }

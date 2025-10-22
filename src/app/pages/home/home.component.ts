@@ -122,4 +122,116 @@ export class HomeComponent implements OnInit {
     // Restaurar meta tags padrão ao resetar
     this.setSeoTags();
   }
+
+  getPlaceIcon(place: any): string {
+    const category = place?.category?.toLowerCase() || '';
+    const name = place?.name?.toLowerCase() || '';
+    
+    // Praia & Natureza
+    if (category.includes('praia') || name.includes('praia') || name.includes('beach')) {
+      return '🏖️';
+    }
+    if (category.includes('natureza') || category.includes('parque') || name.includes('parque')) {
+      return '🌳';
+    }
+    
+    // Cultura & História
+    if (category.includes('cultur') || category.includes('histór') || category.includes('museu')) {
+      return '🏛️';
+    }
+    if (name.includes('igreja') || name.includes('catedral') || name.includes('capela')) {
+      return '⛪';
+    }
+    
+    // Gastronomia
+    if (category.includes('gastronom') || name.includes('restaurant') || name.includes('comida')) {
+      return '🍝';
+    }
+    if (name.includes('bar') || name.includes('pub') || name.includes('cervejaria')) {
+      return '🍻';
+    }
+    if (name.includes('café') || name.includes('cafe') || name.includes('padaria')) {
+      return '☕';
+    }
+    
+    // Compras
+    if (category.includes('compras') || category.includes('shopping') || name.includes('shopping')) {
+      return '🛍️';
+    }
+    if (name.includes('mercado') || name.includes('feira')) {
+      return '🛒';
+    }
+    
+    // Esportes & Aventura
+    if (category.includes('esport') || name.includes('esport') || name.includes('academia')) {
+      return '⚽';
+    }
+    if (category.includes('aventura') || name.includes('trilha') || name.includes('cachoeira')) {
+      return '🧗';
+    }
+    if (name.includes('estádio') || name.includes('estadio') || name.includes('arena')) {
+      return '🏟️';
+    }
+    
+    // Entretenimento
+    if (category.includes('entretenimento') || name.includes('cinema') || name.includes('teatro')) {
+      return '🎭';
+    }
+    if (name.includes('show') || name.includes('concerto') || name.includes('festival')) {
+      return '🎵';
+    }
+    
+    // Hotel & Hospedagem
+    if (name.includes('hotel') || name.includes('pousada') || name.includes('resort')) {
+      return '🏨';
+    }
+    
+    // Transporte
+    if (name.includes('aeroporto') || name.includes('rodoviária') || name.includes('estação')) {
+      return '🚗';
+    }
+    
+    // Default
+    return '📍';
+  }
+
+  getPlaceGradient(place: any): string {
+    const category = place?.category?.toLowerCase() || '';
+    
+    if (category.includes('praia') || category.includes('natureza')) {
+      return 'linear-gradient(135deg, #51cf66, #2b8a3e)'; // Verde
+    } else if (category.includes('gastronom')) {
+      return 'linear-gradient(135deg, #ff922b, #e8590c)'; // Laranja
+    } else if (category.includes('cultur') || category.includes('histór') || category.includes('museu')) {
+      return 'linear-gradient(135deg, #ff6b6b, #e03131)'; // Vermelho
+    } else if (category.includes('compras') || category.includes('shopping')) {
+      return 'linear-gradient(135deg, #339af0, #1971c2)'; // Azul
+    } else if (category.includes('entretenimento') || category.includes('show')) {
+      return 'linear-gradient(135deg, #cc5de8, #9c36b5)'; // Roxo
+    } else if (category.includes('esport') || category.includes('aventura')) {
+      return 'linear-gradient(135deg, #f59f00, #e67700)'; // Laranja escuro
+    } else {
+      return 'linear-gradient(135deg, #667eea, #764ba2)'; // Azul padrão
+    }
+  }
+
+  getBadgeClass(place: any): string {
+    const category = place?.category?.toLowerCase() || '';
+    
+    if (category.includes('praia') || category.includes('natureza')) {
+      return 'natureza';
+    } else if (category.includes('gastronom')) {
+      return 'gastronomia';
+    } else if (category.includes('cultur') || category.includes('histór') || category.includes('museu')) {
+      return 'cultural';
+    } else if (category.includes('compras') || category.includes('shopping')) {
+      return 'compras';
+    } else if (category.includes('entretenimento') || category.includes('show')) {
+      return 'entretenimento';
+    } else if (category.includes('esport') || category.includes('aventura')) {
+      return 'esportes';
+    } else {
+      return 'cultural';
+    }
+  }
 }
