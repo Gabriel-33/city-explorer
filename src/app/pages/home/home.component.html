@@ -3,6 +3,9 @@
   <div class="content">
     <!-- Formulário (mantido igual) -->
     <form [formGroup]="itineraryForm" (ngSubmit)="onSubmit()" class="itinerary-form">
+      <header class="header">
+        <h2>Gere seu roteiro personalizado</h2>
+      </header>
       <div class="form-row">
         <div class="form-group">
           <label for="city">🏙️ Cidade:</label>
@@ -74,7 +77,7 @@
             class="btn-primary"
             [disabled]="!itineraryForm.valid || isLoading"
         >
-            {{ isLoading ? '🗺️ Criando roteiro...' : '✨ Criar Roteiro' }}
+            {{ isLoading ? '🗺️ Criando roteiro...' : 'Gerar Roteiro' }}
         </button>
       </div>
     </form>
