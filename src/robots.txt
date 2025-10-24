@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://explorador-cidades-br.netlify.app/sitemap.xml

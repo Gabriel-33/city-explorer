@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
       description: 'Crie roteiros de viagem personalizados para cidades brasileiras usando IA. Descubra os melhores lugares, horários e dicas para sua viagem.',
       keywords: 'roteiro viagem, cidades brasileiras, turismo brasil, planejador viagem, pontos turísticos, dicas viagem, ia, inteligência artificial',
       image: '/assets/og-image.jpg',
-      url: 'https://meu-explorador.netlify.app'
+      url: 'https://explorador-cidades-br.netlify.app'
     });
   }
 
@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
       description: `Roteiro de viagem para ${itinerary.city} com ${itinerary.days.length} dias. ${itinerary.summary}`,
       keywords: `roteiro ${itinerary.city}, turismo ${itinerary.state}, pontos turísticos ${itinerary.city}, viagem ${itinerary.city}`,
       image: '/assets/og-image.jpg',
-      url: `https://meu-explorador.netlify.app?city=${encodeURIComponent(itinerary.city)}&state=${encodeURIComponent(itinerary.state)}`
+      url: `https://explorador-cidades-br.netlify.app/?city=${encodeURIComponent(itinerary.city)}&state=${encodeURIComponent(itinerary.state)}`
     });
   }
 
